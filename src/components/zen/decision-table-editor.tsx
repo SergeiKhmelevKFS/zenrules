@@ -23,7 +23,7 @@ type DecisionTableEditorProps = {
 };
 
 const OPERATORS = ['==', '!=', '>', '<', '>=', '<='];
-const EMPLOYEE_STATUSES = ['any', 'active', 'leaver', 'new_joiner', 'third_party', 'FSP'];
+const EMPLOYEE_STATUSES = ['any', 'active', 'leaver', 'new_joiner', 'third_party', 'FSP', 'secondary', 'deactivated', 'deceased'];
 const PRIMARY_CARD_ACTIONS = ['-', 'new', 'activate', 'deactivate'];
 const SECONDARY_CARD_ACTIONS = ['-', 'new', 'activate', 'deactivate'];
 const EXPIRES_IN_OPTIONS = ['-', '1 month', '3 months', '1 year', '5 years'];

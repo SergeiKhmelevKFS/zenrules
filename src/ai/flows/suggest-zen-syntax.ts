@@ -47,8 +47,8 @@ Each object in the "then" array must have the following structure: {"output": ".
 For equality comparisons in the "when" clause, you must use the "==" operator.
 
 Here are the available inputs and their possible values:
-- Input "previousEmployeeStatus" can be one of: 'any', 'active', 'leaver', 'new_joiner', 'third_party', 'FSP'.
-- Input "newEmployeeStatus" can be one of: 'any', 'active', 'leaver', 'new_joiner', 'third_party', 'FSP'.
+- Input "previousEmployeeStatus" can be one of: 'any', 'active', 'leaver', 'new_joiner', 'third_party', 'FSP', 'secondary', 'deactivated', 'deceased'.
+- Input "newEmployeeStatus" can be one of: 'any', 'active', 'leaver', 'new_joiner', 'third_party', 'FSP', 'secondary', 'deactivated', 'deceased'.
 
 Here are the available outputs and their possible values:
 - Output "primaryCardAction" can be one of: 'new', 'activate', 'deactivate'.
