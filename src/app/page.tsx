@@ -22,7 +22,8 @@ const defaultRule: Rule = {
   outputs: [
     { "name": "primaryCardAction", "type": "string" },
     { "name": "secondaryCardAction", "type": "string" },
-    { "name": "expiresIn", "type": "string" }
+    { "name": "expiresIn", "type": "string" },
+    { "name": "afterServicePeriod", "type": "string" }
   ],
   rules: [
     {
@@ -58,7 +59,6 @@ export default function ZenRuleEditorPage() {
   const [activeView, setActiveView] = useState('editor');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [theme, setTheme] = useState('light');
-  const [apiKey, setApiKey] = useState('');
 
   const handleRuleChange = useCallback((newRule: Rule) => {
     setRule(newRule);
@@ -66,10 +66,6 @@ export default function ZenRuleEditorPage() {
 
   useEffect(() => {
     setIsMounted(true);
-    const storedKey = localStorage.getItem('gemini-api-key');
-    if (storedKey) {
-      setApiKey(storedKey);
-    }
     const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
     setTheme(currentTheme);
   }, []);
@@ -208,8 +204,6 @@ export default function ZenRuleEditorPage() {
           <div className="flex items-center gap-2">
             <AiHelperDialog 
               onUseSuggestion={handleUseSuggestion}
-              apiKey={apiKey}
-              onApiKeyChange={setApiKey}
             />
             <Button variant="outline" onClick={handleImportClick}>
               <FileUp className="mr-2 h-4 w-4" />

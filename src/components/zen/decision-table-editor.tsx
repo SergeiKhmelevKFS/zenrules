@@ -27,11 +27,13 @@ const EMPLOYEE_STATUSES = ['any', 'active', 'leaver', 'new_joiner', 'third_party
 const PRIMARY_CARD_ACTIONS = ['-', 'new', 'activate', 'deactivate'];
 const SECONDARY_CARD_ACTIONS = ['-', 'new', 'activate', 'deactivate'];
 const EXPIRES_IN_OPTIONS = ['-', '1 month', '3 months', '1 year', '5 years'];
+const AFTER_SERVICE_PERIOD_OPTIONS = ['-', '1 month', '3 months'];
 
 const ACTION_CONFIG = [
     { key: 'primaryCardAction', label: 'Primary Card', options: PRIMARY_CARD_ACTIONS },
     { key: 'secondaryCardAction', label: 'Secondary Card', options: SECONDARY_CARD_ACTIONS },
     { key: 'expiresIn', label: 'Expires In', options: EXPIRES_IN_OPTIONS },
+    { key: 'afterServicePeriod', label: 'After Service Period', options: AFTER_SERVICE_PERIOD_OPTIONS },
 ];
 
 function EditDescriptionDialog({

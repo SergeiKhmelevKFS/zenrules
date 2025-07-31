@@ -54,6 +54,7 @@ Here are the available outputs and their possible values:
 - Output "primaryCardAction" can be one of: 'new', 'activate', 'deactivate'.
 - Output "secondaryCardAction" can be one of: 'new', 'activate', 'deactivate'.
 - Output "expiresIn" can be one of: '1 month', '3 months', '1 year', '5 years'.
+- Output "afterServicePeriod" can be one of: '1 month', '3 months'.
 
 Do not use any other values for inputs or outputs.
 
