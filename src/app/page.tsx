@@ -8,7 +8,7 @@ import RuleTester from '@/components/zen/rule-tester';
 import DecisionTableEditor from '@/components/zen/decision-table-editor';
 import AiHelperDialog from '@/components/zen/ai-helper-dialog';
 import { Button } from '@/components/ui/button';
-import { Save, FileUp, CodeXml } from 'lucide-react';
+import { Save, FileUp, CodeXml, Sun, Moon } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 
@@ -57,6 +57,8 @@ export default function ZenRuleEditorPage() {
   const { toast } = useToast();
   const [activeView, setActiveView] = useState('editor');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [theme, setTheme] = useState('light');
+  const [apiKey, setApiKey] = useState('');
 
   const handleRuleChange = useCallback((newRule: Rule) => {
     setRule(newRule);
@@ -64,9 +66,23 @@ export default function ZenRuleEditorPage() {
 
   useEffect(() => {
     setIsMounted(true);
-    // You could still load from localStorage on initial load if desired
-    // For now, we just start with the default.
+    const storedKey = localStorage.getItem('gemini-api-key');
+    if (storedKey) {
+      setApiKey(storedKey);
+    }
+    const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    setTheme(currentTheme);
   }, []);
+  
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
   
   const handleUseSuggestion = (suggestion: string) => {
     try {
@@ -190,7 +206,11 @@ export default function ZenRuleEditorPage() {
             </TabsList>
           </div>
           <div className="flex items-center gap-2">
-            <AiHelperDialog onUseSuggestion={handleUseSuggestion} />
+            <AiHelperDialog 
+              onUseSuggestion={handleUseSuggestion}
+              apiKey={apiKey}
+              onApiKeyChange={setApiKey}
+            />
             <Button variant="outline" onClick={handleImportClick}>
               <FileUp className="mr-2 h-4 w-4" />
               Import
@@ -198,6 +218,10 @@ export default function ZenRuleEditorPage() {
             <Button onClick={handleSave}>
               <Save className="mr-2 h-4 w-4" />
               Save
+            </Button>
+            <Button variant="outline" size="icon" onClick={toggleTheme}>
+              {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+              <span className="sr-only">Toggle theme</span>
             </Button>
           </div>
         </header>
